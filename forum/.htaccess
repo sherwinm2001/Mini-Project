@@ -1,0 +1,24 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /forum/
+RewriteRule ^register register.html
+RewriteRule ^login_fail index.php?status=login_fail
+RewriteRule ^reg_success index.php?status=reg_success
+
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+
+RewriteRule ^topics/(.+)/(.+)/(.+)$ topics.php?cid=$1&scid=$2&status=login_fail [L]
+RewriteRule ^topics/(.+)/(.+)$ topics.php?cid=$1&scid=$2 [L]
+
+RewriteRule ^newtopic/(.+)/(.+)/(.+)$ newtopic.php?cid=$1&scid=$2&status=login_fail [L]
+RewriteRule ^newtopic/(.+)/(.+)$ newtopic.php?cid=$1&scid=$2 [L]
+
+RewriteRule ^readtopic/(.+)/(.+)/(.+)/(.+)$ readtopic.php?cid=$1&scid=$2&tid=$3&status=login_fail [L]
+RewriteRule ^readtopic/(.+)/(.+)/(.+)$ readtopic.php?cid=$1&scid=$2&tid=$3 [L]
+
+RewriteRule ^addreply/(.+)/(.+)/(.+)/(.+)$ addreply.php?cid=$1&scid=$2&tid=$3&status=login_fail [L]
+RewriteRule ^addreply/(.+)/(.+)/(.+)$ addreply.php?cid=$1&scid=$2&tid=$3 [L]
+
+RewriteRule ^replyto/(.+)/(.+)/(.+)/(.+)$ replyto.php?cid=$1&scid=$2&tid=$3&status=login_fail [L]
+RewriteRule ^replyto/(.+)/(.+)/(.+)$ replyto.php?cid=$1&scid=$2&tid=$3 [L]
